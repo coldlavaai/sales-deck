@@ -320,6 +320,627 @@
         display: block !important;
       }
     }
+
+    /* ===== SECTION 4: PRODUCTS ACCORDION ===== */
+
+    .products-accordion {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .tier-item {
+      border-bottom: 1px solid rgba(6, 182, 212, 0.1);
+    }
+
+    .tier-item:first-child {
+      border-top: 1px solid rgba(6, 182, 212, 0.1);
+    }
+
+    .tier-header {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      padding: 1.75rem 0;
+      cursor: pointer;
+      transition: all 0.3s var(--ease-smooth);
+      position: relative;
+      user-select: none;
+    }
+
+    .tier-header:hover {
+      padding-left: 0.5rem;
+    }
+
+    .tier-header:hover .tier-name {
+      color: var(--color-accent);
+    }
+
+    .tier-header:hover .tier-line {
+      background: var(--color-accent);
+      width: 3rem;
+    }
+
+    .tier-number {
+      font-family: var(--font-mono);
+      font-size: 0.6rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.25);
+      min-width: 2rem;
+      transition: color 0.3s var(--ease-smooth);
+    }
+
+    .tier-item.active .tier-number {
+      color: var(--color-accent);
+    }
+
+    .tier-line {
+      width: 2rem;
+      height: 1px;
+      background: rgba(6, 182, 212, 0.2);
+      transition: all 0.4s var(--ease-smooth);
+      flex-shrink: 0;
+    }
+
+    .tier-item.active .tier-line {
+      width: 4rem;
+      background: var(--color-accent);
+    }
+
+    .tier-name {
+      font-size: clamp(1.25rem, 2.5vw, 1.75rem);
+      font-weight: 600;
+      color: var(--color-text-primary);
+      transition: color 0.3s var(--ease-smooth);
+      flex: 1;
+    }
+
+    .tier-item.active .tier-name {
+      color: var(--color-accent);
+    }
+
+    .tier-badge {
+      font-family: var(--font-mono);
+      font-size: 0.55rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      padding: 0.35rem 0.75rem;
+      border: 1px solid rgba(212, 175, 55, 0.3);
+      color: var(--color-gold);
+      background: rgba(212, 175, 55, 0.05);
+      white-space: nowrap;
+    }
+
+    .tier-chevron {
+      width: 20px;
+      height: 20px;
+      transition: transform 0.4s var(--ease-smooth);
+      color: rgba(255, 255, 255, 0.3);
+      flex-shrink: 0;
+    }
+
+    .tier-item.active .tier-chevron {
+      transform: rotate(180deg);
+      color: var(--color-accent);
+    }
+
+    .tier-body {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.5s var(--ease-smooth), opacity 0.4s var(--ease-smooth);
+      opacity: 0;
+    }
+
+    .tier-item.active .tier-body {
+      opacity: 1;
+    }
+
+    .tier-content {
+      padding: 0 0 3rem 3.5rem;
+    }
+
+    .tier-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .tier-info-block h4 {
+      font-family: var(--font-mono);
+      font-size: 0.6rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--color-accent);
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .tier-info-block h4::before {
+      content: '';
+      width: 8px;
+      height: 1px;
+      background: var(--color-accent);
+    }
+
+    .tier-info-block p,
+    .tier-info-block li {
+      color: var(--color-text-secondary);
+      font-size: 0.9rem;
+      line-height: 1.7;
+    }
+
+    .tier-info-block ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .tier-info-block ul li {
+      padding-left: 1.25rem;
+      position: relative;
+      margin-bottom: 0.5rem;
+    }
+
+    .tier-info-block ul li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0.65rem;
+      width: 4px;
+      height: 4px;
+      background: rgba(6, 182, 212, 0.4);
+      border-radius: 50%;
+    }
+
+    .tier-description {
+      color: var(--color-text-secondary);
+      font-size: 1rem;
+      line-height: 1.7;
+      margin-bottom: 2rem;
+      max-width: 700px;
+    }
+
+    /* Demo containers */
+    .demo-area {
+      position: relative;
+      margin-top: 2rem;
+    }
+
+    .demo-area .demo-label {
+      font-family: var(--font-mono);
+      font-size: 0.55rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: rgba(6, 182, 212, 0.5);
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .demo-area .demo-label::before,
+    .demo-area .demo-label::after {
+      content: '';
+      height: 1px;
+      background: rgba(6, 182, 212, 0.15);
+    }
+
+    .demo-area .demo-label::before { width: 1.5rem; }
+    .demo-area .demo-label::after { flex: 1; }
+
+    .demo-frame-wrapper {
+      position: relative;
+      background: rgba(0, 0, 0, 0.4);
+      border: 1px solid rgba(6, 182, 212, 0.15);
+      overflow: hidden;
+    }
+
+    .demo-frame-wrapper::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 12px; height: 12px;
+      border-left: 1px solid rgba(6, 182, 212, 0.3);
+      border-top: 1px solid rgba(6, 182, 212, 0.3);
+      z-index: 2;
+    }
+
+    .demo-frame-wrapper::after {
+      content: '';
+      position: absolute;
+      bottom: 0; right: 0;
+      width: 12px; height: 12px;
+      border-right: 1px solid rgba(6, 182, 212, 0.3);
+      border-bottom: 1px solid rgba(6, 182, 212, 0.3);
+      z-index: 2;
+    }
+
+    .demo-frame-wrapper iframe {
+      display: block;
+      width: 100%;
+      border: none;
+      background: #0a0a0f;
+    }
+
+    /* Device mockups for Tier 3 */
+    .device-showcase {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 2rem;
+      align-items: start;
+    }
+
+    .device-mockup {
+      position: relative;
+    }
+
+    .device-mockup .device-label {
+      font-family: var(--font-mono);
+      font-size: 0.55rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: rgba(255, 255, 255, 0.3);
+      margin-bottom: 0.75rem;
+      text-align: center;
+    }
+
+    .laptop-frame {
+      position: relative;
+      background: #111;
+      border: 2px solid rgba(255, 255, 255, 0.1);
+      border-radius: 8px 8px 0 0;
+      padding: 8px 8px 0;
+      aspect-ratio: 16/10;
+      overflow: hidden;
+    }
+
+    .laptop-frame::after {
+      content: '';
+      display: block;
+      height: 18px;
+      background: linear-gradient(to bottom, #1a1a1a, #111);
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: 0 0 8px 8px;
+      margin: 0 -8px;
+      position: relative;
+    }
+
+    .laptop-frame iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      border-radius: 4px 4px 0 0;
+      background: #0a0a0f;
+    }
+
+    .laptop-base {
+      height: 12px;
+      background: linear-gradient(to bottom, #1a1a1a, #0d0d0d);
+      border-radius: 0 0 4px 4px;
+      margin: 0 -5%;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-top: none;
+    }
+
+    .phone-frame {
+      position: relative;
+      background: #111;
+      border: 3px solid rgba(255, 255, 255, 0.12);
+      border-radius: 24px;
+      padding: 32px 8px 24px;
+      max-width: 180px;
+      margin: 0 auto;
+      aspect-ratio: 9/19;
+      overflow: hidden;
+    }
+
+    .phone-frame::before {
+      content: '';
+      position: absolute;
+      top: 12px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 40%;
+      height: 4px;
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 4px;
+      z-index: 5;
+    }
+
+    .phone-frame iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      border-radius: 12px;
+      background: #0a0a0f;
+    }
+
+    /* Voice/Chat demo cards */
+    .demo-cards-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+    }
+
+    .demo-card {
+      position: relative;
+      background: rgba(0, 0, 0, 0.5);
+      border: 1px solid rgba(6, 182, 212, 0.15);
+      padding: 2rem;
+      transition: all 0.3s var(--ease-smooth);
+    }
+
+    .demo-card:hover {
+      border-color: rgba(6, 182, 212, 0.4);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 32px rgba(6, 182, 212, 0.1);
+    }
+
+    .demo-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 12px; height: 12px;
+      border-left: 1px solid rgba(6, 182, 212, 0.2);
+      border-top: 1px solid rgba(6, 182, 212, 0.2);
+    }
+
+    .demo-card::after {
+      content: '';
+      position: absolute;
+      bottom: 0; right: 0;
+      width: 12px; height: 12px;
+      border-right: 1px solid rgba(6, 182, 212, 0.2);
+      border-bottom: 1px solid rgba(6, 182, 212, 0.2);
+    }
+
+    .demo-card-icon {
+      font-size: 1.75rem;
+      margin-bottom: 1rem;
+    }
+
+    .demo-card h5 {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--color-text-primary);
+      margin-bottom: 0.5rem;
+    }
+
+    .demo-card p {
+      font-size: 0.85rem;
+      color: var(--color-text-muted);
+      line-height: 1.5;
+      margin-bottom: 1rem;
+    }
+
+    .demo-card .demo-action {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--color-accent);
+      text-decoration: none;
+      transition: gap 0.3s var(--ease-smooth);
+    }
+
+    .demo-card:hover .demo-action {
+      gap: 0.75rem;
+    }
+
+    .demo-action svg {
+      width: 12px;
+      height: 12px;
+    }
+
+    /* Workflow diagram for Tier 1 */
+    .workflow-demo {
+      display: flex;
+      align-items: center;
+      gap: 0;
+      overflow-x: auto;
+      padding: 1.5rem 0;
+    }
+
+    .workflow-node {
+      position: relative;
+      background: rgba(0, 0, 0, 0.5);
+      border: 1px solid rgba(6, 182, 212, 0.2);
+      padding: 1rem 1.25rem;
+      min-width: 140px;
+      text-align: center;
+      flex-shrink: 0;
+    }
+
+    .workflow-node::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 8px; height: 8px;
+      border-left: 1px solid rgba(6, 182, 212, 0.3);
+      border-top: 1px solid rgba(6, 182, 212, 0.3);
+    }
+
+    .workflow-node::after {
+      content: '';
+      position: absolute;
+      bottom: 0; right: 0;
+      width: 8px; height: 8px;
+      border-right: 1px solid rgba(6, 182, 212, 0.3);
+      border-bottom: 1px solid rgba(6, 182, 212, 0.3);
+    }
+
+    .workflow-node .node-icon {
+      font-size: 1.25rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .workflow-node .node-title {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--color-text-primary);
+    }
+
+    .workflow-node .node-sub {
+      font-size: 0.7rem;
+      color: var(--color-text-muted);
+      margin-top: 0.25rem;
+    }
+
+    .workflow-arrow {
+      display: flex;
+      align-items: center;
+      padding: 0 0.5rem;
+      flex-shrink: 0;
+    }
+
+    .workflow-arrow svg {
+      width: 24px;
+      height: 24px;
+      color: rgba(6, 182, 212, 0.3);
+    }
+
+    /* BOS module tabs */
+    .bos-tabs {
+      display: flex;
+      gap: 0;
+      margin-bottom: 0;
+    }
+
+    .bos-tab {
+      font-family: var(--font-mono);
+      font-size: 0.6rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      padding: 0.75rem 1.25rem;
+      background: rgba(0, 0, 0, 0.3);
+      border: 1px solid rgba(6, 182, 212, 0.1);
+      border-bottom: none;
+      color: var(--color-text-muted);
+      cursor: pointer;
+      transition: all 0.3s var(--ease-smooth);
+      position: relative;
+    }
+
+    .bos-tab:hover {
+      color: var(--color-text-secondary);
+      background: rgba(6, 182, 212, 0.05);
+    }
+
+    .bos-tab.active {
+      color: var(--color-accent);
+      background: rgba(0, 0, 0, 0.6);
+      border-color: rgba(6, 182, 212, 0.2);
+    }
+
+    .bos-tab.active::after {
+      content: '';
+      position: absolute;
+      bottom: -1px;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: var(--color-bg);
+    }
+
+    .bos-panel {
+      display: none;
+    }
+
+    .bos-panel.active {
+      display: block;
+    }
+
+    /* Sales approach callout */
+    .sales-tip {
+      position: relative;
+      background: rgba(212, 175, 55, 0.04);
+      border-left: 2px solid var(--color-gold);
+      padding: 1.25rem 1.5rem;
+      margin-top: 1.5rem;
+    }
+
+    .sales-tip .tip-label {
+      font-family: var(--font-mono);
+      font-size: 0.55rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--color-gold);
+      margin-bottom: 0.5rem;
+    }
+
+    .sales-tip p {
+      color: var(--color-text-secondary);
+      font-size: 0.9rem;
+      line-height: 1.6;
+    }
+
+    /* Flagship badge */
+    .flagship-glow {
+      position: relative;
+    }
+
+    .flagship-glow::before {
+      content: '';
+      position: absolute;
+      inset: -2px;
+      background: linear-gradient(135deg, rgba(212, 175, 55, 0.15), rgba(6, 182, 212, 0.1), rgba(212, 175, 55, 0.15));
+      z-index: -1;
+      animation: flagshipPulse 4s ease-in-out infinite;
+    }
+
+    @keyframes flagshipPulse {
+      0%, 100% { opacity: 0.5; }
+      50% { opacity: 1; }
+    }
+
+    /* Products responsive */
+    @media (max-width: 768px) {
+      .tier-content {
+        padding-left: 0;
+      }
+
+      .tier-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .tier-header {
+        gap: 1rem;
+      }
+
+      .tier-line {
+        display: none;
+      }
+
+      .tier-badge {
+        display: none;
+      }
+
+      .demo-cards-row {
+        grid-template-columns: 1fr;
+      }
+
+      .device-showcase {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+
+      .phone-frame {
+        max-width: 200px;
+      }
+
+      .workflow-demo {
+        gap: 0;
+        justify-content: flex-start;
+      }
+    }
   </style>
 </head>
 <body>
@@ -617,6 +1238,567 @@
     </div>
   </section>
   
+  <!-- SECTION 4: PRODUCTS / WHAT YOU'RE SELLING -->
+  <section class="section fade-in" id="products">
+    <div class="container">
+      <div class="label" style="margin-bottom: 1rem;">Products / 003</div>
+      <h2 style="margin-bottom: 1rem;">What You're Selling</h2>
+      <p class="lead" style="margin-bottom: 3.5rem; max-width: 700px;">Seven product tiers from quick automations to full business operating systems. Click each tier to explore what it includes, who it's for, and how to pitch it.</p>
+
+      <div class="products-accordion">
+
+        <!-- TIER 1: Quick Win Automations -->
+        <div class="tier-item" id="tier-1">
+          <div class="tier-header" onclick="toggleTier(this)">
+            <span class="tier-number">01</span>
+            <div class="tier-line"></div>
+            <span class="tier-name">Quick Win Automations</span>
+            <span class="tier-badge">Entry Level</span>
+            <svg class="tier-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+          <div class="tier-body">
+            <div class="tier-content">
+              <p class="tier-description">Small but powerful automations that save hours every week. The perfect entry point — fast to deploy, immediate ROI, and a gateway to bigger projects.</p>
+
+              <div class="tier-grid">
+                <div class="tier-info-block">
+                  <h4>Best For</h4>
+                  <ul>
+                    <li>Businesses drowning in manual data entry</li>
+                    <li>Teams copy-pasting between spreadsheets and tools</li>
+                    <li>Anyone sending repetitive emails or follow-ups</li>
+                    <li>Companies not ready for a big system overhaul</li>
+                  </ul>
+                </div>
+                <div class="tier-info-block">
+                  <h4>What's Included</h4>
+                  <ul>
+                    <li>Form-to-CRM automation</li>
+                    <li>Email/SMS follow-up sequences</li>
+                    <li>Spreadsheet sync workflows</li>
+                    <li>Notification & alert systems</li>
+                    <li>Data formatting & routing</li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="sales-tip">
+                <div class="tip-label">Sales Approach</div>
+                <p>"What's the one task your team wastes the most time on every week?" Start there. Quick wins build trust and open the door to bigger projects. Position as low-risk, high-reward.</p>
+              </div>
+
+              <div class="demo-area">
+                <div class="demo-label">Live Example — Workflow Automation</div>
+                <div class="workflow-demo">
+                  <div class="workflow-node">
+                    <div class="node-icon">📋</div>
+                    <div class="node-title">Form Submitted</div>
+                    <div class="node-sub">Website / Landing Page</div>
+                  </div>
+                  <div class="workflow-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+                  <div class="workflow-node">
+                    <div class="node-icon">⚡</div>
+                    <div class="node-title">AI Processing</div>
+                    <div class="node-sub">Classify & Route</div>
+                  </div>
+                  <div class="workflow-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+                  <div class="workflow-node">
+                    <div class="node-icon">📊</div>
+                    <div class="node-title">CRM Updated</div>
+                    <div class="node-sub">Auto-populate fields</div>
+                  </div>
+                  <div class="workflow-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+                  <div class="workflow-node">
+                    <div class="node-icon">📨</div>
+                    <div class="node-title">Follow-up Sent</div>
+                    <div class="node-sub">Email + SMS</div>
+                  </div>
+                  <div class="workflow-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+                  <div class="workflow-node">
+                    <div class="node-icon">🔔</div>
+                    <div class="node-title">Team Notified</div>
+                    <div class="node-sub">Slack / WhatsApp</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- TIER 2: AI Chat & Voice Agents -->
+        <div class="tier-item" id="tier-2">
+          <div class="tier-header" onclick="toggleTier(this)">
+            <span class="tier-number">02</span>
+            <div class="tier-line"></div>
+            <span class="tier-name">AI Chat & Voice Agents</span>
+            <span class="tier-badge">High Demand</span>
+            <svg class="tier-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+          <div class="tier-body">
+            <div class="tier-content">
+              <p class="tier-description">24/7 AI-powered agents that handle customer enquiries, qualify leads, and book appointments — via chat on their website or voice over the phone. No human intervention needed.</p>
+
+              <div class="tier-grid">
+                <div class="tier-info-block">
+                  <h4>Best For</h4>
+                  <ul>
+                    <li>Businesses missing leads outside office hours</li>
+                    <li>Teams overwhelmed with repetitive enquiries</li>
+                    <li>Companies wanting 24/7 customer support without hiring</li>
+                    <li>Sales teams needing pre-qualified appointments</li>
+                  </ul>
+                </div>
+                <div class="tier-info-block">
+                  <h4>Capabilities</h4>
+                  <ul>
+                    <li>Website chat widget (trained on their business)</li>
+                    <li>Inbound & outbound voice calling</li>
+                    <li>Lead qualification & scoring</li>
+                    <li>Appointment booking (calendar integration)</li>
+                    <li>Multi-language support</li>
+                    <li>CRM integration & handoff to humans</li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="sales-tip">
+                <div class="tip-label">Sales Approach</div>
+                <p>"How many leads do you lose after 5pm?" This is the killer question. Most businesses can't answer it — and that's the problem. Show them the chat widget live, let them test it. The voice agent demo is a jaw-dropper — call the number and let them hear it.</p>
+              </div>
+
+              <div class="demo-area">
+                <div class="demo-label">Try It Live</div>
+                <div class="demo-cards-row">
+                  <div class="demo-card">
+                    <div class="demo-card-icon">💬</div>
+                    <h5>Live Chat Widget</h5>
+                    <p>A real AI chat agent trained on a client's business. Ask it anything — it knows their services, pricing, and can book appointments.</p>
+                    <div class="demo-frame-wrapper" style="margin-top: 1rem; height: 350px;">
+                      <iframe src="https://detaildynamics.vercel.app/" style="height: 100%; pointer-events: auto;" loading="lazy" title="Live Chat Demo"></iframe>
+                    </div>
+                  </div>
+                  <div class="demo-card">
+                    <div class="demo-card-icon">📞</div>
+                    <h5>Voice Agent Demo</h5>
+                    <p>Call our AI voice agent right now. It handles inbound calls, qualifies leads, and books appointments — all conversationally.</p>
+                    <div style="margin-top: 1.5rem; padding: 2rem; background: rgba(0,0,0,0.3); border: 1px solid rgba(6, 182, 212, 0.1); text-align: center;">
+                      <div style="font-family: var(--font-mono); font-size: 0.55rem; text-transform: uppercase; letter-spacing: 0.15em; color: rgba(255,255,255,0.3); margin-bottom: 1rem;">Call Sophie — Our AI Agent</div>
+                      <a href="tel:+441515416933" style="font-size: 1.5rem; font-weight: 700; color: var(--color-accent); text-decoration: none; letter-spacing: 0.05em; display: block; margin-bottom: 0.75rem;">+44 151 541 6933</a>
+                      <div style="font-size: 0.75rem; color: var(--color-text-muted);">Available 24/7 — Try it in front of your prospect</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- TIER 3: Premium Websites -->
+        <div class="tier-item" id="tier-3">
+          <div class="tier-header" onclick="toggleTier(this)">
+            <span class="tier-number">03</span>
+            <div class="tier-line"></div>
+            <span class="tier-name">Premium Websites</span>
+            <span class="tier-badge">Visual Impact</span>
+            <svg class="tier-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+          <div class="tier-body">
+            <div class="tier-content">
+              <p class="tier-description">Stunning, high-performance websites built from scratch. Not WordPress templates — fully custom-coded, fast-loading, and designed to convert visitors into customers.</p>
+
+              <div class="tier-grid">
+                <div class="tier-info-block">
+                  <h4>Best For</h4>
+                  <ul>
+                    <li>Businesses with outdated or slow websites</li>
+                    <li>Companies wanting to stand out from competitors</li>
+                    <li>Brands needing mobile-first, SEO-optimised sites</li>
+                    <li>Anyone tired of WordPress limitations</li>
+                  </ul>
+                </div>
+                <div class="tier-info-block">
+                  <h4>What's Included</h4>
+                  <ul>
+                    <li>Custom design & development</li>
+                    <li>Mobile-responsive (all devices)</li>
+                    <li>SEO optimisation built-in</li>
+                    <li>CMS integration (content management)</li>
+                    <li>Analytics & conversion tracking</li>
+                    <li>Performance optimised (&lt;2s load time)</li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="sales-tip">
+                <div class="tip-label">Sales Approach</div>
+                <p>"Pull up their current website on your phone. Then show them ours side-by-side." The visual difference sells itself. Mention speed — run a PageSpeed test on their site live. Most score under 50. Ours score 90+.</p>
+              </div>
+
+              <div class="demo-area">
+                <div class="demo-label">Client Websites — Live Previews</div>
+                <div class="device-showcase">
+
+                  <div class="device-mockup">
+                    <div class="device-label">Greenstar Solar</div>
+                    <div class="laptop-frame">
+                      <iframe src="https://greenstarwebsiteupgrade.vercel.app/" loading="lazy" title="Greenstar Solar"></iframe>
+                    </div>
+                    <div class="laptop-base"></div>
+                  </div>
+
+                  <div class="device-mockup">
+                    <div class="device-label">Detail Dynamics</div>
+                    <div class="laptop-frame">
+                      <iframe src="https://detaildynamics.vercel.app/" loading="lazy" title="Detail Dynamics"></iframe>
+                    </div>
+                    <div class="laptop-base"></div>
+                  </div>
+
+                  <div class="device-mockup">
+                    <div class="device-label">Mobile View</div>
+                    <div class="phone-frame">
+                      <iframe src="https://greenstarwebsiteupgrade.vercel.app/" loading="lazy" title="Greenstar Solar Mobile"></iframe>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- TIER 4: Lead Systems -->
+        <div class="tier-item" id="tier-4">
+          <div class="tier-header" onclick="toggleTier(this)">
+            <span class="tier-number">04</span>
+            <div class="tier-line"></div>
+            <span class="tier-name">Lead Systems</span>
+            <span class="tier-badge">Revenue Driver</span>
+            <svg class="tier-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+          <div class="tier-body">
+            <div class="tier-content">
+              <p class="tier-description">End-to-end lead capture, qualification, and nurturing systems. From the first touchpoint to a closed deal — fully automated, fully tracked, fully owned by the client.</p>
+
+              <div class="tier-grid">
+                <div class="tier-info-block">
+                  <h4>Best For</h4>
+                  <ul>
+                    <li>Businesses relying on word-of-mouth alone</li>
+                    <li>Sales teams with no structured pipeline</li>
+                    <li>Companies losing leads in spreadsheets</li>
+                    <li>Anyone running ads without proper tracking</li>
+                  </ul>
+                </div>
+                <div class="tier-info-block">
+                  <h4>What's Included</h4>
+                  <ul>
+                    <li>Custom lead capture forms & landing pages</li>
+                    <li>AI-powered lead scoring & qualification</li>
+                    <li>Automated email/SMS nurture sequences</li>
+                    <li>Pipeline dashboard with stage tracking</li>
+                    <li>Integration with existing CRM or custom build</li>
+                    <li>Database Reactivation (DBR) for dormant leads</li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="sales-tip">
+                <div class="tip-label">Sales Approach</div>
+                <p>"How many leads from last year are sitting in a spreadsheet untouched?" DBR is the hook — we can reactivate their dead leads and generate revenue from contacts they've already paid to acquire. It's the fastest ROI in our toolkit.</p>
+              </div>
+
+              <div class="demo-area">
+                <div class="demo-label">Lead Pipeline Preview</div>
+                <div class="demo-frame-wrapper" style="padding: 2rem;">
+                  <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; text-align: center;">
+                    <div style="padding: 1.5rem 1rem; background: rgba(6, 182, 212, 0.05); border: 1px solid rgba(6, 182, 212, 0.15);">
+                      <div style="font-family: var(--font-mono); font-size: 1.75rem; font-weight: 700; color: var(--color-accent); margin-bottom: 0.5rem;">47</div>
+                      <div style="font-family: var(--font-mono); font-size: 0.55rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-text-muted);">New Leads</div>
+                    </div>
+                    <div style="padding: 1.5rem 1rem; background: rgba(6, 182, 212, 0.05); border: 1px solid rgba(6, 182, 212, 0.15);">
+                      <div style="font-family: var(--font-mono); font-size: 1.75rem; font-weight: 700; color: var(--color-accent); margin-bottom: 0.5rem;">23</div>
+                      <div style="font-family: var(--font-mono); font-size: 0.55rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-text-muted);">Qualified</div>
+                    </div>
+                    <div style="padding: 1.5rem 1rem; background: rgba(6, 182, 212, 0.05); border: 1px solid rgba(6, 182, 212, 0.15);">
+                      <div style="font-family: var(--font-mono); font-size: 1.75rem; font-weight: 700; color: var(--color-accent); margin-bottom: 0.5rem;">12</div>
+                      <div style="font-family: var(--font-mono); font-size: 0.55rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-text-muted);">Proposal Sent</div>
+                    </div>
+                    <div style="padding: 1.5rem 1rem; background: rgba(212, 175, 55, 0.08); border: 1px solid rgba(212, 175, 55, 0.25);">
+                      <div style="font-family: var(--font-mono); font-size: 1.75rem; font-weight: 700; color: var(--color-gold); margin-bottom: 0.5rem;">8</div>
+                      <div style="font-family: var(--font-mono); font-size: 0.55rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-gold);">Closed Won</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- TIER 5: Real-time Dashboards -->
+        <div class="tier-item" id="tier-5">
+          <div class="tier-header" onclick="toggleTier(this)">
+            <span class="tier-number">05</span>
+            <div class="tier-line"></div>
+            <span class="tier-name">Real-time Dashboards</span>
+            <span class="tier-badge">Visibility</span>
+            <svg class="tier-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+          <div class="tier-body">
+            <div class="tier-content">
+              <p class="tier-description">Custom dashboards that pull data from every corner of a business and display it in real-time. No more guessing, no more waiting for end-of-month reports. Know exactly what's happening, right now.</p>
+
+              <div class="tier-grid">
+                <div class="tier-info-block">
+                  <h4>Best For</h4>
+                  <ul>
+                    <li>Owners who don't know their numbers in real-time</li>
+                    <li>Teams manually compiling reports from multiple tools</li>
+                    <li>Businesses scaling and needing operational visibility</li>
+                    <li>Management teams making decisions on gut feel</li>
+                  </ul>
+                </div>
+                <div class="tier-info-block">
+                  <h4>What's Included</h4>
+                  <ul>
+                    <li>Custom KPI dashboards (revenue, leads, ops)</li>
+                    <li>Multi-source data integration</li>
+                    <li>Real-time updates (live data feeds)</li>
+                    <li>Role-based access (different views for different teams)</li>
+                    <li>Mobile-responsive dashboard access</li>
+                    <li>Automated alerts & threshold notifications</li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="sales-tip">
+                <div class="tip-label">Sales Approach</div>
+                <p>"Can you tell me your revenue this week without checking a spreadsheet?" If they can't, they need this. Show how everything connects — their accounting software, CRM, project tools — all feeding into one view. Business owners love seeing their numbers in real-time.</p>
+              </div>
+
+              <div class="demo-area">
+                <div class="demo-label">Dashboard Preview</div>
+                <div class="demo-frame-wrapper" style="padding: 2rem;">
+                  <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-bottom: 1.5rem;">
+                    <div style="padding: 1.25rem; background: rgba(6, 182, 212, 0.04); border: 1px solid rgba(6, 182, 212, 0.12);">
+                      <div style="font-family: var(--font-mono); font-size: 0.5rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--color-text-muted); margin-bottom: 0.5rem;">Revenue (MTD)</div>
+                      <div style="font-size: 1.5rem; font-weight: 700; color: var(--color-text-primary);">£47,320</div>
+                      <div style="font-family: var(--font-mono); font-size: 0.6rem; color: #4ade80; margin-top: 0.25rem;">+12.4% vs last month</div>
+                    </div>
+                    <div style="padding: 1.25rem; background: rgba(6, 182, 212, 0.04); border: 1px solid rgba(6, 182, 212, 0.12);">
+                      <div style="font-family: var(--font-mono); font-size: 0.5rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--color-text-muted); margin-bottom: 0.5rem;">Active Projects</div>
+                      <div style="font-size: 1.5rem; font-weight: 700; color: var(--color-text-primary);">14</div>
+                      <div style="font-family: var(--font-mono); font-size: 0.6rem; color: var(--color-accent); margin-top: 0.25rem;">3 completing this week</div>
+                    </div>
+                    <div style="padding: 1.25rem; background: rgba(6, 182, 212, 0.04); border: 1px solid rgba(6, 182, 212, 0.12);">
+                      <div style="font-family: var(--font-mono); font-size: 0.5rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--color-text-muted); margin-bottom: 0.5rem;">Customer Satisfaction</div>
+                      <div style="font-size: 1.5rem; font-weight: 700; color: var(--color-text-primary);">98.2%</div>
+                      <div style="font-family: var(--font-mono); font-size: 0.6rem; color: #4ade80; margin-top: 0.25rem;">Based on 127 reviews</div>
+                    </div>
+                  </div>
+                  <!-- Mini chart bars -->
+                  <div style="border-top: 1px solid rgba(6, 182, 212, 0.1); padding-top: 1.25rem;">
+                    <div style="font-family: var(--font-mono); font-size: 0.5rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--color-text-muted); margin-bottom: 1rem;">Weekly Revenue Trend</div>
+                    <div style="display: flex; align-items: flex-end; gap: 6px; height: 80px;">
+                      <div style="flex: 1; background: rgba(6, 182, 212, 0.2); height: 45%; border-top: 2px solid var(--color-accent);"></div>
+                      <div style="flex: 1; background: rgba(6, 182, 212, 0.2); height: 60%; border-top: 2px solid var(--color-accent);"></div>
+                      <div style="flex: 1; background: rgba(6, 182, 212, 0.2); height: 40%; border-top: 2px solid var(--color-accent);"></div>
+                      <div style="flex: 1; background: rgba(6, 182, 212, 0.2); height: 75%; border-top: 2px solid var(--color-accent);"></div>
+                      <div style="flex: 1; background: rgba(6, 182, 212, 0.2); height: 55%; border-top: 2px solid var(--color-accent);"></div>
+                      <div style="flex: 1; background: rgba(6, 182, 212, 0.2); height: 85%; border-top: 2px solid var(--color-accent);"></div>
+                      <div style="flex: 1; background: rgba(6, 182, 212, 0.2); height: 65%; border-top: 2px solid var(--color-accent);"></div>
+                      <div style="flex: 1; background: rgba(6, 182, 212, 0.2); height: 90%; border-top: 2px solid var(--color-accent);"></div>
+                      <div style="flex: 1; background: rgba(6, 182, 212, 0.2); height: 70%; border-top: 2px solid var(--color-accent);"></div>
+                      <div style="flex: 1; background: rgba(6, 182, 212, 0.2); height: 80%; border-top: 2px solid var(--color-accent);"></div>
+                      <div style="flex: 1; background: rgba(212, 175, 55, 0.3); height: 95%; border-top: 2px solid var(--color-gold);"></div>
+                      <div style="flex: 1; background: rgba(212, 175, 55, 0.3); height: 100%; border-top: 2px solid var(--color-gold);"></div>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; margin-top: 0.5rem;">
+                      <span style="font-family: var(--font-mono); font-size: 0.45rem; color: rgba(255,255,255,0.2);">W1</span>
+                      <span style="font-family: var(--font-mono); font-size: 0.45rem; color: rgba(255,255,255,0.2);">W6</span>
+                      <span style="font-family: var(--font-mono); font-size: 0.45rem; color: var(--color-gold);">NOW</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- TIER 6: AI Employees -->
+        <div class="tier-item" id="tier-6">
+          <div class="tier-header" onclick="toggleTier(this)">
+            <span class="tier-number">06</span>
+            <div class="tier-line"></div>
+            <span class="tier-name">AI Employees</span>
+            <span class="tier-badge">Advanced</span>
+            <svg class="tier-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+          <div class="tier-body">
+            <div class="tier-content">
+              <p class="tier-description">Full-time AI workers that handle entire job roles — not just tasks. Voice note agents that process dictation into structured actions, AI that manages inboxes, schedules, and follow-ups autonomously.</p>
+
+              <div class="tier-grid">
+                <div class="tier-info-block">
+                  <h4>Best For</h4>
+                  <ul>
+                    <li>Business owners spending hours on admin</li>
+                    <li>Teams needing an assistant but can't justify hiring</li>
+                    <li>Executives who prefer speaking over typing</li>
+                    <li>Companies wanting to scale without scaling headcount</li>
+                  </ul>
+                </div>
+                <div class="tier-info-block">
+                  <h4>Capabilities</h4>
+                  <ul>
+                    <li>Voice note → structured task creation</li>
+                    <li>Email inbox management & auto-responses</li>
+                    <li>Meeting scheduling & preparation</li>
+                    <li>Document generation from voice instructions</li>
+                    <li>Daily briefings & status reports</li>
+                    <li>Multi-platform integration (Slack, Teams, WhatsApp)</li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="sales-tip">
+                <div class="tip-label">Sales Approach</div>
+                <p>"What if you could hire a full-time assistant for a fraction of the cost, and they never sleep, never take holidays, and never make mistakes?" Frame it as replacing roles, not tasks. The voice note agent is the showstopper — send a voice note, watch it become a task list.</p>
+              </div>
+
+              <div class="demo-area">
+                <div class="demo-label">Voice Note Agent — How It Works</div>
+                <div class="demo-frame-wrapper" style="padding: 2rem;">
+                  <div style="display: grid; grid-template-columns: 1fr auto 1fr; gap: 1.5rem; align-items: center;">
+                    <!-- Input -->
+                    <div style="padding: 1.5rem; background: rgba(0,0,0,0.3); border: 1px solid rgba(6, 182, 212, 0.12);">
+                      <div style="font-family: var(--font-mono); font-size: 0.55rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--color-accent); margin-bottom: 1rem;">Voice Input</div>
+                      <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem;">
+                        <div style="width: 36px; height: 36px; border-radius: 50%; background: rgba(6, 182, 212, 0.15); border: 1px solid rgba(6, 182, 212, 0.3); display: flex; align-items: center; justify-content: center; font-size: 1rem;">🎙️</div>
+                        <div style="flex: 1; display: flex; gap: 2px; align-items: center; height: 24px;">
+                          <div style="width: 2px; height: 8px; background: var(--color-accent); opacity: 0.6;"></div>
+                          <div style="width: 2px; height: 16px; background: var(--color-accent); opacity: 0.8;"></div>
+                          <div style="width: 2px; height: 12px; background: var(--color-accent); opacity: 0.7;"></div>
+                          <div style="width: 2px; height: 20px; background: var(--color-accent);"></div>
+                          <div style="width: 2px; height: 14px; background: var(--color-accent); opacity: 0.8;"></div>
+                          <div style="width: 2px; height: 6px; background: var(--color-accent); opacity: 0.5;"></div>
+                          <div style="width: 2px; height: 18px; background: var(--color-accent); opacity: 0.9;"></div>
+                          <div style="width: 2px; height: 10px; background: var(--color-accent); opacity: 0.6;"></div>
+                          <div style="width: 2px; height: 22px; background: var(--color-accent);"></div>
+                          <div style="width: 2px; height: 8px; background: var(--color-accent); opacity: 0.5;"></div>
+                        </div>
+                      </div>
+                      <p style="font-size: 0.8rem; color: var(--color-text-muted); font-style: italic; line-height: 1.5;">"Need to follow up with the Greenstar team about the dashboard, book a call with the new lead from LinkedIn, and draft a proposal for the plumbing company..."</p>
+                    </div>
+                    <!-- Arrow -->
+                    <div>
+                      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="color: rgba(6, 182, 212, 0.4);"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </div>
+                    <!-- Output -->
+                    <div style="padding: 1.5rem; background: rgba(0,0,0,0.3); border: 1px solid rgba(212, 175, 55, 0.15);">
+                      <div style="font-family: var(--font-mono); font-size: 0.55rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--color-gold); margin-bottom: 1rem;">AI Output</div>
+                      <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+                        <div style="display: flex; align-items: flex-start; gap: 0.5rem;">
+                          <div style="width: 6px; height: 6px; border: 1px solid #4ade80; border-radius: 1px; margin-top: 0.35rem; flex-shrink: 0;"></div>
+                          <span style="font-size: 0.8rem; color: var(--color-text-secondary);">Task created: Follow up with Greenstar re: dashboard</span>
+                        </div>
+                        <div style="display: flex; align-items: flex-start; gap: 0.5rem;">
+                          <div style="width: 6px; height: 6px; border: 1px solid #4ade80; border-radius: 1px; margin-top: 0.35rem; flex-shrink: 0;"></div>
+                          <span style="font-size: 0.8rem; color: var(--color-text-secondary);">Calendar: Booking link sent to LinkedIn lead</span>
+                        </div>
+                        <div style="display: flex; align-items: flex-start; gap: 0.5rem;">
+                          <div style="width: 6px; height: 6px; border: 1px solid #4ade80; border-radius: 1px; margin-top: 0.35rem; flex-shrink: 0;"></div>
+                          <span style="font-size: 0.8rem; color: var(--color-text-secondary);">Draft proposal generated for plumbing company</span>
+                        </div>
+                      </div>
+                      <div style="margin-top: 1rem; font-family: var(--font-mono); font-size: 0.5rem; color: rgba(74, 222, 128, 0.6);">3 actions completed in 4.2 seconds</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- TIER 7: Business Operating Systems -->
+        <div class="tier-item flagship-glow" id="tier-7">
+          <div class="tier-header" onclick="toggleTier(this)">
+            <span class="tier-number" style="color: var(--color-gold);">07</span>
+            <div class="tier-line" style="background: rgba(212, 175, 55, 0.3);"></div>
+            <span class="tier-name">Business Operating Systems</span>
+            <span class="tier-badge" style="border-color: rgba(212, 175, 55, 0.5); background: rgba(212, 175, 55, 0.1);">Flagship</span>
+            <svg class="tier-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+          <div class="tier-body">
+            <div class="tier-content">
+              <p class="tier-description" style="font-size: 1.05rem;">The crown jewel. A fully bespoke software platform that runs an entire business — CRM, project management, invoicing, team coordination, client portals, analytics, automation — all in one system, built specifically for how that business operates.</p>
+
+              <div class="tier-grid">
+                <div class="tier-info-block">
+                  <h4 style="color: var(--color-gold);">Best For</h4>
+                  <ul>
+                    <li>Growing businesses outgrowing their tools</li>
+                    <li>Companies paying for 5+ SaaS subscriptions that don't talk to each other</li>
+                    <li>Businesses with complex operations needing centralised control</li>
+                    <li>Companies wanting to own their technology, not rent it</li>
+                  </ul>
+                </div>
+                <div class="tier-info-block">
+                  <h4 style="color: var(--color-gold);">What's Included</h4>
+                  <ul>
+                    <li>Custom CRM & client management</li>
+                    <li>Project & task management</li>
+                    <li>Invoicing & financial tracking</li>
+                    <li>Team collaboration & communication</li>
+                    <li>Client-facing portal</li>
+                    <li>Real-time dashboards & reporting</li>
+                    <li>AI-powered automation throughout</li>
+                    <li>Multi-user role-based access</li>
+                    <li>Full API & integration capability</li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="sales-tip" style="border-left-color: var(--color-gold);">
+                <div class="tip-label">Sales Approach</div>
+                <p>"How many different systems does your team log into every day?" Count them: email, CRM, project management, invoicing, scheduling, analytics, communication. Each one costs money, none of them talk to each other, and data falls through the cracks. A BOS replaces all of them with one system built around YOUR business. This is the big deal — the highest value, the most transformative, the one they'll thank you for.</p>
+              </div>
+
+              <div class="demo-area">
+                <div class="demo-label" style="color: rgba(212, 175, 55, 0.6);">Solar BOS — Live Demo</div>
+                <div class="bos-tabs">
+                  <button class="bos-tab active" onclick="switchBosTab(this, 'bos-dashboard')">Dashboard</button>
+                  <button class="bos-tab" onclick="switchBosTab(this, 'bos-crm')">CRM</button>
+                  <button class="bos-tab" onclick="switchBosTab(this, 'bos-projects')">Projects</button>
+                </div>
+                <div class="demo-frame-wrapper" style="height: 500px;">
+                  <div id="bos-dashboard" class="bos-panel active">
+                    <iframe src="https://sales-rep-onboarding-final.vercel.app/" style="width: 100%; height: 500px; border: none;" loading="lazy" title="Solar BOS Dashboard"></iframe>
+                  </div>
+                  <div id="bos-crm" class="bos-panel">
+                    <div style="height: 500px; display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 1rem; padding: 2rem;">
+                      <div style="font-size: 2.5rem;">📊</div>
+                      <div style="font-family: var(--font-mono); font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.15em; color: var(--color-text-muted);">CRM Module</div>
+                      <p style="font-size: 0.85rem; color: var(--color-text-muted); text-align: center; max-width: 400px;">Customer management, pipeline tracking, and automated follow-ups — all connected to the rest of the BOS.</p>
+                    </div>
+                  </div>
+                  <div id="bos-projects" class="bos-panel">
+                    <div style="height: 500px; display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 1rem; padding: 2rem;">
+                      <div style="font-size: 2.5rem;">📋</div>
+                      <div style="font-family: var(--font-mono); font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.15em; color: var(--color-text-muted);">Project Management</div>
+                      <p style="font-size: 0.85rem; color: var(--color-text-muted); text-align: center; max-width: 400px;">Track installations, assign teams, manage timelines — with real-time status updates and client visibility.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /products-accordion -->
+    </div>
+  </section>
+
   <!-- SECTION 6: SALES POINTS FOR REPS -->
   <section class="section fade-in" id="sales-points">
     <div class="container">
@@ -696,13 +1878,145 @@
     </div>
   </section>
   
-  <!-- PHASE 3: PRODUCTS - TO BE BUILT -->
-  <!-- Section 4: Products (7 tiers with demos) -->
-  
-  <!-- PHASE 4: FINISHING - TO BE BUILT -->
-  <!-- Section 5: Commissions -->
-  <!-- Section 7: Portfolio (conditional) -->
-  <!-- Section 8: Sign-off -->
+  <!-- SECTION 5: COMMISSIONS -->
+  <section class="section fade-in" id="commissions">
+    <div class="container">
+      <div class="label" style="margin-bottom: 1rem;">Earnings / 004</div>
+      <h2 style="margin-bottom: 1rem;">Your Commissions</h2>
+      <p class="lead" style="margin-bottom: 4rem; max-width: 600px;">What you earn on every deal. Upfront commission paid on close, recurring paid monthly for the lifetime of the client.</p>
+
+      <!-- 5A: Sales Rep Commissions -->
+      <div style="margin-bottom: 5rem;">
+        <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 2rem;">
+          <div style="height: 1px; width: 1.5rem; background: var(--color-accent);"></div>
+          <span class="label" style="color: var(--color-accent);">Sales Rep Commissions</span>
+          <div style="flex: 1; height: 1px; background: rgba(6, 182, 212, 0.1);"></div>
+        </div>
+
+        <!-- Table Header -->
+        <div style="display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 1px; margin-bottom: 1px;">
+          <div style="padding: 1rem 1.5rem; background: rgba(6, 182, 212, 0.08); font-family: var(--font-mono); font-size: 0.55rem; text-transform: uppercase; letter-spacing: 0.15em; color: var(--color-text-muted);">Product</div>
+          <div style="padding: 1rem 1.5rem; background: rgba(6, 182, 212, 0.08); font-family: var(--font-mono); font-size: 0.55rem; text-transform: uppercase; letter-spacing: 0.15em; color: var(--color-text-muted); text-align: right;">Price</div>
+          <div style="padding: 1rem 1.5rem; background: rgba(6, 182, 212, 0.08); font-family: var(--font-mono); font-size: 0.55rem; text-transform: uppercase; letter-spacing: 0.15em; color: var(--color-gold); text-align: right;">Upfront</div>
+          <div style="padding: 1rem 1.5rem; background: rgba(6, 182, 212, 0.08); font-family: var(--font-mono); font-size: 0.55rem; text-transform: uppercase; letter-spacing: 0.15em; color: var(--color-gold); text-align: right;">Recurring /mo</div>
+        </div>
+
+        <!-- Table Rows -->
+        <div class="commission-row" style="display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 1px; margin-bottom: 1px;">
+          <div style="padding: 1.25rem 1.5rem; background: rgba(0,0,0,0.4); border-left: 2px solid rgba(6, 182, 212, 0.15); font-size: 0.9rem; color: var(--color-text-primary);">Quick Win Automations</div>
+          <div style="padding: 1.25rem 1.5rem; background: rgba(0,0,0,0.4); font-family: var(--font-mono); font-size: 0.85rem; color: var(--color-text-secondary); text-align: right;">£TBD</div>
+          <div style="padding: 1.25rem 1.5rem; background: rgba(0,0,0,0.4); font-family: var(--font-mono); font-size: 0.85rem; color: var(--color-gold); font-weight: 600; text-align: right;">£TBD</div>
+          <div style="padding: 1.25rem 1.5rem; background: rgba(0,0,0,0.4); font-family: var(--font-mono); font-size: 0.85rem; color: var(--color-gold); font-weight: 600; text-align: right;">£TBD</div>
+        </div>
+        <div class="commission-row" style="display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 1px; margin-bottom: 1px;">
+          <div style="padding: 1.25rem 1.5rem; background: rgba(0,0,0,0.3); border-left: 2px solid rgba(6, 182, 212, 0.15); font-size: 0.9rem; color: var(--color-text-primary);">AI Chat & Voice Agents</div>
+          <div style="padding: 1.25rem 1.5rem; background: rgba(0,0,0,0.3); font-family: var(--font-mono); font-size: 0.85rem; color: var(--color-text-secondary); text-align: right;">£TBD</div>
+          <div style="padding: 1.25rem 1.5rem; background: rgba(0,0,0,0.3); font-family: var(--font-mono); font-size: 0.85rem; color: var(--color-gold); font-weight: 600; text-align: right;">£TBD</div>
+          <div style="padding: 1.25rem 1.5rem; background: rgba(0,0,0,0.3); font-family: var(--font-mono); font-size: 0.85rem; color: var(--color-gold); font-weight: 600; text-align: right;">£TBD</div>
+        </div>
+        <div class="commission-row" style="display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 1px; margin-bottom: 1px;">
+          <div style="padding: 1.25rem 1.5rem; background: rgba(0,0,0,0.4); border-left: 2px solid rgba(6, 182, 212, 0.15); font-size: 0.9rem; color: var(--color-text-primary);">Premium Websites</div>
+          <div style="padding: 1.25rem 1.5rem; background: rgba(0,0,0,0.4); font-family: var(--font-mono); font-size: 0.85rem; color: var(--color-text-secondary); text-align: right;">£TBD</div>
+          <div style="padding: 1.25rem 1.5rem; background: rgba(0,0,0,0.4); font-family: var(--font-mono); font-size: 0.85rem; color: var(--color-gold); font-weight: 600; text-align: right;">£TBD</div>
+          <div style="padding: 1.25rem 1.5rem; background: rgba(0,0,0,0.4); font-family: var(--font-mono); font-size: 0.85rem; color: var(--color-gold); font-weight: 600; text-align: right;">£TBD</div>
+        </div>
+        <div class="commission-row" style="display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 1px; margin-bottom: 1px;">
+          <div style="padding: 1.25rem 1.5rem; background: rgba(0,0,0,0.3); border-left: 2px solid rgba(6, 182, 212, 0.15); font-size: 0.9rem; color: var(--color-text-primary);">Lead Systems</div>
+          <div style="padding: 1.25rem 1.5rem; background: rgba(0,0,0,0.3); font-family: var(--font-mono); font-size: 0.85rem; color: var(--color-text-secondary); text-align: right;">£TBD</div>
+          <div style="padding: 1.25rem 1.5rem; background: rgba(0,0,0,0.3); font-family: var(--font-mono); font-size: 0.85rem; color: var(--color-gold); font-weight: 600; text-align: right;">£TBD</div>
+          <div style="padding: 1.25rem 1.5rem; background: rgba(0,0,0,0.3); font-family: var(--font-mono); font-size: 0.85rem; color: var(--color-gold); font-weight: 600; text-align: right;">£TBD</div>
+        </div>
+        <div class="commission-row" style="display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 1px; margin-bottom: 1px;">
+          <div style="padding: 1.25rem 1.5rem; background: rgba(0,0,0,0.4); border-left: 2px solid rgba(6, 182, 212, 0.15); font-size: 0.9rem; color: var(--color-text-primary);">Real-time Dashboards</div>
+          <div style="padding: 1.25rem 1.5rem; background: rgba(0,0,0,0.4); font-family: var(--font-mono); font-size: 0.85rem; color: var(--color-text-secondary); text-align: right;">£TBD</div>
+          <div style="padding: 1.25rem 1.5rem; background: rgba(0,0,0,0.4); font-family: var(--font-mono); font-size: 0.85rem; color: var(--color-gold); font-weight: 600; text-align: right;">£TBD</div>
+          <div style="padding: 1.25rem 1.5rem; background: rgba(0,0,0,0.4); font-family: var(--font-mono); font-size: 0.85rem; color: var(--color-gold); font-weight: 600; text-align: right;">£TBD</div>
+        </div>
+        <div class="commission-row" style="display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 1px; margin-bottom: 1px;">
+          <div style="padding: 1.25rem 1.5rem; background: rgba(0,0,0,0.3); border-left: 2px solid rgba(6, 182, 212, 0.15); font-size: 0.9rem; color: var(--color-text-primary);">AI Employees</div>
+          <div style="padding: 1.25rem 1.5rem; background: rgba(0,0,0,0.3); font-family: var(--font-mono); font-size: 0.85rem; color: var(--color-text-secondary); text-align: right;">£TBD</div>
+          <div style="padding: 1.25rem 1.5rem; background: rgba(0,0,0,0.3); font-family: var(--font-mono); font-size: 0.85rem; color: var(--color-gold); font-weight: 600; text-align: right;">£TBD</div>
+          <div style="padding: 1.25rem 1.5rem; background: rgba(0,0,0,0.3); font-family: var(--font-mono); font-size: 0.85rem; color: var(--color-gold); font-weight: 600; text-align: right;">£TBD</div>
+        </div>
+        <div class="commission-row" style="display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 1px; margin-bottom: 1px;">
+          <div style="padding: 1.25rem 1.5rem; background: rgba(212, 175, 55, 0.06); border-left: 2px solid var(--color-gold); font-size: 0.9rem; color: var(--color-gold); font-weight: 600;">Business Operating Systems</div>
+          <div style="padding: 1.25rem 1.5rem; background: rgba(212, 175, 55, 0.06); font-family: var(--font-mono); font-size: 0.85rem; color: var(--color-text-secondary); text-align: right;">£TBD</div>
+          <div style="padding: 1.25rem 1.5rem; background: rgba(212, 175, 55, 0.06); font-family: var(--font-mono); font-size: 0.85rem; color: var(--color-gold); font-weight: 700; text-align: right;">£TBD</div>
+          <div style="padding: 1.25rem 1.5rem; background: rgba(212, 175, 55, 0.06); font-family: var(--font-mono); font-size: 0.85rem; color: var(--color-gold); font-weight: 700; text-align: right;">£TBD</div>
+        </div>
+      </div>
+
+      <!-- 5B: BDR / Appointment Setter Commissions -->
+      <div>
+        <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 2rem;">
+          <div style="height: 1px; width: 1.5rem; background: var(--color-accent);"></div>
+          <span class="label" style="color: var(--color-accent);">BDR / Appointment Setter Commissions</span>
+          <div style="flex: 1; height: 1px; background: rgba(6, 182, 212, 0.1);"></div>
+        </div>
+
+        <p style="color: var(--color-text-muted); font-size: 0.9rem; margin-bottom: 2rem;">For team members who find leads and book appointments but don't close deals. Commission paid per qualified appointment booked.</p>
+
+        <!-- Table Header -->
+        <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 1px; margin-bottom: 1px;">
+          <div style="padding: 1rem 1.5rem; background: rgba(6, 182, 212, 0.08); font-family: var(--font-mono); font-size: 0.55rem; text-transform: uppercase; letter-spacing: 0.15em; color: var(--color-text-muted);">Product</div>
+          <div style="padding: 1rem 1.5rem; background: rgba(6, 182, 212, 0.08); font-family: var(--font-mono); font-size: 0.55rem; text-transform: uppercase; letter-spacing: 0.15em; color: var(--color-gold); text-align: right;">Per Appointment</div>
+        </div>
+
+        <!-- Table Rows -->
+        <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 1px; margin-bottom: 1px;">
+          <div style="padding: 1.25rem 1.5rem; background: rgba(0,0,0,0.4); border-left: 2px solid rgba(6, 182, 212, 0.15); font-size: 0.9rem; color: var(--color-text-primary);">Quick Win Automations</div>
+          <div style="padding: 1.25rem 1.5rem; background: rgba(0,0,0,0.4); font-family: var(--font-mono); font-size: 0.85rem; color: var(--color-gold); font-weight: 600; text-align: right;">£TBD</div>
+        </div>
+        <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 1px; margin-bottom: 1px;">
+          <div style="padding: 1.25rem 1.5rem; background: rgba(0,0,0,0.3); border-left: 2px solid rgba(6, 182, 212, 0.15); font-size: 0.9rem; color: var(--color-text-primary);">AI Chat & Voice Agents</div>
+          <div style="padding: 1.25rem 1.5rem; background: rgba(0,0,0,0.3); font-family: var(--font-mono); font-size: 0.85rem; color: var(--color-gold); font-weight: 600; text-align: right;">£TBD</div>
+        </div>
+        <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 1px; margin-bottom: 1px;">
+          <div style="padding: 1.25rem 1.5rem; background: rgba(0,0,0,0.4); border-left: 2px solid rgba(6, 182, 212, 0.15); font-size: 0.9rem; color: var(--color-text-primary);">Premium Websites</div>
+          <div style="padding: 1.25rem 1.5rem; background: rgba(0,0,0,0.4); font-family: var(--font-mono); font-size: 0.85rem; color: var(--color-gold); font-weight: 600; text-align: right;">£TBD</div>
+        </div>
+        <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 1px; margin-bottom: 1px;">
+          <div style="padding: 1.25rem 1.5rem; background: rgba(0,0,0,0.3); border-left: 2px solid rgba(6, 182, 212, 0.15); font-size: 0.9rem; color: var(--color-text-primary);">Lead Systems</div>
+          <div style="padding: 1.25rem 1.5rem; background: rgba(0,0,0,0.3); font-family: var(--font-mono); font-size: 0.85rem; color: var(--color-gold); font-weight: 600; text-align: right;">£TBD</div>
+        </div>
+        <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 1px; margin-bottom: 1px;">
+          <div style="padding: 1.25rem 1.5rem; background: rgba(0,0,0,0.4); border-left: 2px solid rgba(6, 182, 212, 0.15); font-size: 0.9rem; color: var(--color-text-primary);">Real-time Dashboards</div>
+          <div style="padding: 1.25rem 1.5rem; background: rgba(0,0,0,0.4); font-family: var(--font-mono); font-size: 0.85rem; color: var(--color-gold); font-weight: 600; text-align: right;">£TBD</div>
+        </div>
+        <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 1px; margin-bottom: 1px;">
+          <div style="padding: 1.25rem 1.5rem; background: rgba(0,0,0,0.3); border-left: 2px solid rgba(6, 182, 212, 0.15); font-size: 0.9rem; color: var(--color-text-primary);">AI Employees</div>
+          <div style="padding: 1.25rem 1.5rem; background: rgba(0,0,0,0.3); font-family: var(--font-mono); font-size: 0.85rem; color: var(--color-gold); font-weight: 600; text-align: right;">£TBD</div>
+        </div>
+        <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 1px; margin-bottom: 1px;">
+          <div style="padding: 1.25rem 1.5rem; background: rgba(212, 175, 55, 0.06); border-left: 2px solid var(--color-gold); font-size: 0.9rem; color: var(--color-gold); font-weight: 600;">Business Operating Systems</div>
+          <div style="padding: 1.25rem 1.5rem; background: rgba(212, 175, 55, 0.06); font-family: var(--font-mono); font-size: 0.85rem; color: var(--color-gold); font-weight: 700; text-align: right;">£TBD</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SECTION 8: SIGN-OFF -->
+  <section class="section fade-in" id="sign-off" style="text-align: center; padding-top: 10rem; padding-bottom: 10rem;">
+    <div class="container" style="max-width: 700px;">
+      <div class="label" style="margin-bottom: 2rem; color: var(--color-gold);">Welcome Aboard</div>
+      <h2 style="margin-bottom: 2rem;">Welcome to<br>the Team</h2>
+      <p class="lead" style="margin-bottom: 1.5rem;">
+        You're not just selling software — you're solving real problems for real businesses. We've got your back with the best tech, the best support, and the best products in the market.
+      </p>
+      <p style="color: var(--color-text-muted); font-size: 0.95rem; margin-bottom: 3rem;">
+        Any questions? Any time. We're here to help you succeed.
+      </p>
+      <a href="https://cal.com/coldlava/discovery-call" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 0.75rem; padding: 1rem 2.5rem; background: transparent; border: 1px solid var(--color-gold); color: var(--color-gold); font-family: var(--font-mono); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.15em; text-decoration: none; transition: all 0.3s var(--ease-smooth); cursor: pointer;">
+        Book Your Onboarding Call
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+      <div style="margin-top: 5rem;">
+        <img src="cold-lava-logo.png" alt="Cold Lava" style="width: 60px; opacity: 0.4;">
+        <div style="margin-top: 1rem; font-family: var(--font-mono); font-size: 0.5rem; text-transform: uppercase; letter-spacing: 0.2em; color: rgba(255, 255, 255, 0.15);">Cold Lava / 2026</div>
+      </div>
+    </div>
+  </section>
   
   <script>
     // Loading screen handler
@@ -728,6 +2042,59 @@
     
     // Observe all fade-in elements
     document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+    // ===== PRODUCTS ACCORDION =====
+    function toggleTier(header) {
+      const item = header.parentElement;
+      const body = item.querySelector('.tier-body');
+      const isActive = item.classList.contains('active');
+
+      // Close all tiers
+      document.querySelectorAll('.tier-item.active').forEach(function(activeItem) {
+        activeItem.classList.remove('active');
+        activeItem.querySelector('.tier-body').style.maxHeight = null;
+      });
+
+      // Open clicked tier if it wasn't already open
+      if (!isActive) {
+        item.classList.add('active');
+        body.style.maxHeight = body.scrollHeight + 'px';
+
+        // Update URL hash
+        history.replaceState(null, null, '#' + item.id);
+
+        // Smooth scroll to tier header
+        setTimeout(function() {
+          header.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 100);
+      }
+    }
+
+    // Handle deep linking
+    if (window.location.hash) {
+      var target = document.querySelector(window.location.hash);
+      if (target && target.classList.contains('tier-item')) {
+        setTimeout(function() {
+          var header = target.querySelector('.tier-header');
+          if (header) toggleTier(header);
+        }, 1200);
+      }
+    }
+
+    // ===== BOS TABS =====
+    function switchBosTab(tab, panelId) {
+      // Deactivate all tabs
+      tab.parentElement.querySelectorAll('.bos-tab').forEach(function(t) {
+        t.classList.remove('active');
+      });
+      // Deactivate all panels
+      var panels = tab.closest('.demo-area').querySelectorAll('.bos-panel');
+      panels.forEach(function(p) { p.classList.remove('active'); });
+
+      // Activate selected
+      tab.classList.add('active');
+      document.getElementById(panelId).classList.add('active');
+    }
   </script>
   
 </body>
