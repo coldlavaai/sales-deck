@@ -2019,12 +2019,20 @@
   </section>
   
   <script>
-    // Loading screen handler
-    window.addEventListener('load', function() {
+    // Loading screen handler - use DOMContentLoaded + safety timeout
+    // (window.load waits for iframes which can stall indefinitely)
+    document.addEventListener('DOMContentLoaded', function() {
       setTimeout(function() {
         document.getElementById('loading-screen').classList.add('hidden');
       }, 800);
     });
+    // Safety fallback in case DOMContentLoaded already fired
+    setTimeout(function() {
+      var ls = document.getElementById('loading-screen');
+      if (ls && !ls.classList.contains('hidden')) {
+        ls.classList.add('hidden');
+      }
+    }, 2500);
     
     // Intersection Observer for fade-in animations
     const observerOptions = {
