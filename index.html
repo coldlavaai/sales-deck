@@ -268,12 +268,55 @@
     /* ===== WORKFLOW BOXES (for Process section) ===== */
     .workflow-box {
       position: relative;
-      background: rgba(0, 0, 0, 0.6);
-      backdrop-filter: blur(8px);
-      border: 1px solid rgba(6, 182, 212, 0.2);
-      padding: 1.25rem;
-      width: 200px;
+      background: rgba(0, 0, 0, 0.8);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      padding: 1rem;
+      width: 180px;
       transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* Corner brackets - architectural viewfinder style */
+    .workflow-box::before,
+    .workflow-box::after {
+      content: '';
+      position: absolute;
+      width: 12px;
+      height: 12px;
+      border-color: rgba(6, 182, 212, 0.6);
+      transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .workflow-box::before {
+      top: 0;
+      left: 0;
+      border-left: 1px solid;
+      border-top: 1px solid;
+    }
+
+    .workflow-box::after {
+      bottom: 0;
+      right: 0;
+      border-right: 1px solid;
+      border-bottom: 1px solid;
+    }
+
+    /* Grid overlay */
+    .workflow-box > .workflow-box-subtitle::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: linear-gradient(rgba(6, 182, 212, 0.5) 1px, transparent 1px),
+                        linear-gradient(90deg, rgba(6, 182, 212, 0.5) 1px, transparent 1px);
+      background-size: 12px 12px;
+      opacity: 0.03;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* Active glow background */
+    .workflow-box::after {
+      opacity: 0.5;
     }
     
     .workflow-box-subtitle {
@@ -1339,127 +1382,148 @@
   </section>
   
   <!-- SECTION 3: OUR PROCESS -->
-  <section class="section fade-in" id="process">
-    <div class="container">
-      <div class="label" style="margin-bottom: 1rem;">Process / 003</div>
-      <h2 style="margin-bottom: 3rem;">Our Process</h2>
-      
-      <!-- Two-Column Layout -->
-      <div style="display: grid; grid-template-columns: 400px 1fr; gap: 4rem; align-items: start;">
-        
-        <!-- LEFT COLUMN -->
-        <div>
+  <section class="section fade-in" id="process" style="padding: 6rem 0; border-top: 1px solid rgba(255, 255, 255, 0.05); position: relative; overflow: hidden;">
+    <!-- Grid overlay -->
+    <div style="position: absolute; inset: 0; opacity: 0.015; background-image: linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px); background-size: 32px 32px;"></div>
+
+    <div class="container" style="position: relative;">
+      <!-- Section Header -->
+      <div style="margin-bottom: 3rem;">
+        <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+          <div style="height: 1px; width: 3rem; background: rgba(6, 182, 212, 0.4);"></div>
+          <p style="font-family: var(--font-mono); font-size: 0.625rem; text-transform: uppercase; letter-spacing: 0.3em; color: rgba(255, 255, 255, 0.3);">Process / Methodology</p>
+        </div>
+        <h2 style="font-size: 3.5rem; font-weight: 700; line-height: 1.1; tracking-tight;">
+          No <span style="color: rgba(6, 182, 212, 1);">surprises</span><br />No black boxes
+        </h2>
+      </div>
+
+      <!-- Two-column layout -->
+      <div style="display: grid; grid-template-columns: 35% 65%; gap: 4rem; align-items: start;">
+
+        <!-- LEFT COLUMN - Philosophy & Priorities -->
+        <div style="space-y: 3rem;">
           <!-- Philosophy Box -->
-          <div class="card with-corners" style="margin-bottom: 2rem; padding: 2rem; background: rgba(0, 0, 0, 0.5);">
-            <div class="label" style="color: var(--color-gold); margin-bottom: 1rem;">Philosophy / 002</div>
-            <p style="font-size: 1rem; line-height: 1.6; color: var(--color-text-secondary);">
-              Good, fast, cheap. You can only pick two. We optimise for <span style="color: var(--color-gold); font-weight: 600;">good</span>.
+          <div style="position: relative; border: 1px solid rgba(255, 255, 255, 0.05); padding: 2rem; margin-bottom: 3rem;">
+            <!-- Architectural annotation -->
+            <div style="position: absolute; top: -0.75rem; left: 1.5rem; background: black; padding: 0 0.75rem;">
+              <span style="font-family: var(--font-mono); font-size: 0.5625rem; color: rgba(6, 182, 212, 0.4); text-transform: uppercase; letter-spacing: 0.15em;">Philosophy / 002</span>
+            </div>
+
+            <!-- Corner brackets -->
+            <div style="position: absolute; top: 0; left: 0; width: 1.25rem; height: 1.25rem; border-left: 2px solid rgba(6, 182, 212, 0.2); border-top: 2px solid rgba(6, 182, 212, 0.2);"></div>
+            <div style="position: absolute; top: 0; right: 0; width: 1.25rem; height: 1.25rem; border-right: 2px solid rgba(6, 182, 212, 0.2); border-top: 2px solid rgba(6, 182, 212, 0.2);"></div>
+            <div style="position: absolute; bottom: 0; left: 0; width: 1.25rem; height: 1.25rem; border-left: 2px solid rgba(6, 182, 212, 0.2); border-bottom: 2px solid rgba(6, 182, 212, 0.2);"></div>
+            <div style="position: absolute; bottom: 0; right: 0; width: 1.25rem; height: 1.25rem; border-right: 2px solid rgba(6, 182, 212, 0.2); border-bottom: 2px solid rgba(6, 182, 212, 0.2);"></div>
+
+            <p style="font-family: var(--font-mono); font-size: 0.875rem; color: rgba(255, 255, 255, 0.5); line-height: 1.7;">
+              Good, fast, cheap. You can only pick two. We optimise for <span style="color: rgba(6, 182, 212, 0.8);">good</span>.
             </p>
           </div>
-          
+
           <!-- Development Priorities -->
-          <div style="margin-bottom: 2rem;">
+          <div style="position: relative;">
+            <!-- Label with architectural line -->
             <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1.5rem;">
               <div style="height: 1px; width: 1.5rem; background: rgba(6, 182, 212, 0.2);"></div>
-              <span class="label" style="font-size: 0.55rem; color: rgba(6, 182, 212, 0.4);">Development Priorities</span>
-              <div style="flex: 1; height: 1px; background: rgba(255, 255, 255, 0.05);"></div>
+              <span style="font-family: var(--font-mono); font-size: 0.5625rem; color: rgba(6, 182, 212, 0.4); text-transform: uppercase; letter-spacing: 0.15em;">Partnership Values</span>
+              <div style="height: 1px; flex: 1; background: rgba(255, 255, 255, 0.05);"></div>
             </div>
-            
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; font-size: 0.85rem;">
+
+            <!-- Priorities Grid -->
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem;">
               <div style="display: flex; align-items: center; gap: 0.5rem;">
                 <div style="width: 4px; height: 4px; background: rgba(6, 182, 212, 0.3); border-radius: 50%;"></div>
                 <div style="width: 8px; height: 1px; background: rgba(6, 182, 212, 0.2);"></div>
-                <span style="font-family: var(--font-mono); font-size: 0.6rem; color: rgba(255, 255, 255, 0.4); text-transform: uppercase;">Security First</span>
+                <span style="font-family: var(--font-mono); font-size: 0.625rem; color: rgba(255, 255, 255, 0.4); text-transform: uppercase; letter-spacing: 0.05em;">Recurring Revenue</span>
               </div>
               <div style="display: flex; align-items: center; gap: 0.5rem;">
                 <div style="width: 4px; height: 4px; background: rgba(6, 182, 212, 0.3); border-radius: 50%;"></div>
                 <div style="width: 8px; height: 1px; background: rgba(6, 182, 212, 0.2);"></div>
-                <span style="font-family: var(--font-mono); font-size: 0.6rem; color: rgba(255, 255, 255, 0.4); text-transform: uppercase;">Code Ownership</span>
+                <span style="font-family: var(--font-mono); font-size: 0.625rem; color: rgba(255, 255, 255, 0.4); text-transform: uppercase; letter-spacing: 0.05em;">Transparent Pricing</span>
               </div>
               <div style="display: flex; align-items: center; gap: 0.5rem;">
                 <div style="width: 4px; height: 4px; background: rgba(6, 182, 212, 0.3); border-radius: 50%;"></div>
                 <div style="width: 8px; height: 1px; background: rgba(6, 182, 212, 0.2);"></div>
-                <span style="font-family: var(--font-mono); font-size: 0.6rem; color: rgba(255, 255, 255, 0.4); text-transform: uppercase;">Transparent Pricing</span>
+                <span style="font-family: var(--font-mono); font-size: 0.625rem; color: rgba(255, 255, 255, 0.4); text-transform: uppercase; letter-spacing: 0.05em;">Fast Delivery</span>
               </div>
               <div style="display: flex; align-items: center; gap: 0.5rem;">
                 <div style="width: 4px; height: 4px; background: rgba(6, 182, 212, 0.3); border-radius: 50%;"></div>
                 <div style="width: 8px; height: 1px; background: rgba(6, 182, 212, 0.2);"></div>
-                <span style="font-family: var(--font-mono); font-size: 0.6rem; color: rgba(255, 255, 255, 0.4); text-transform: uppercase;">GDPR Compliant</span>
+                <span style="font-family: var(--font-mono); font-size: 0.625rem; color: rgba(255, 255, 255, 0.4); text-transform: uppercase; letter-spacing: 0.05em;">GDPR Compliant</span>
               </div>
               <div style="display: flex; align-items: center; gap: 0.5rem;">
                 <div style="width: 4px; height: 4px; background: rgba(6, 182, 212, 0.3); border-radius: 50%;"></div>
                 <div style="width: 8px; height: 1px; background: rgba(6, 182, 212, 0.2);"></div>
-                <span style="font-family: var(--font-mono); font-size: 0.6rem; color: rgba(255, 255, 255, 0.4); text-transform: uppercase;">Full Transparency</span>
+                <span style="font-family: var(--font-mono); font-size: 0.625rem; color: rgba(255, 255, 255, 0.4); text-transform: uppercase; letter-spacing: 0.05em;">Full Support</span>
               </div>
               <div style="display: flex; align-items: center; gap: 0.5rem;">
                 <div style="width: 4px; height: 4px; background: rgba(6, 182, 212, 0.3); border-radius: 50%;"></div>
                 <div style="width: 8px; height: 1px; background: rgba(6, 182, 212, 0.2);"></div>
-                <span style="font-family: var(--font-mono); font-size: 0.6rem; color: rgba(255, 255, 255, 0.4); text-transform: uppercase;">No Vendor Lock-in</span>
+                <span style="font-family: var(--font-mono); font-size: 0.625rem; color: rgba(255, 255, 255, 0.4); text-transform: uppercase; letter-spacing: 0.05em;">Code Ownership</span>
               </div>
               <div style="display: flex; align-items: center; gap: 0.5rem;">
                 <div style="width: 4px; height: 4px; background: rgba(6, 182, 212, 0.3); border-radius: 50%;"></div>
                 <div style="width: 8px; height: 1px; background: rgba(6, 182, 212, 0.2);"></div>
-                <span style="font-family: var(--font-mono); font-size: 0.6rem; color: rgba(255, 255, 255, 0.4); text-transform: uppercase;">Documentation Included</span>
+                <span style="font-family: var(--font-mono); font-size: 0.625rem; color: rgba(255, 255, 255, 0.4); text-transform: uppercase; letter-spacing: 0.05em;">Scalable Systems</span>
               </div>
               <div style="display: flex; align-items: center; gap: 0.5rem;">
                 <div style="width: 4px; height: 4px; background: rgba(6, 182, 212, 0.3); border-radius: 50%;"></div>
                 <div style="width: 8px; height: 1px; background: rgba(6, 182, 212, 0.2);"></div>
-                <span style="font-family: var(--font-mono); font-size: 0.6rem; color: rgba(255, 255, 255, 0.4); text-transform: uppercase;">Source Control</span>
+                <span style="font-family: var(--font-mono); font-size: 0.625rem; color: rgba(255, 255, 255, 0.4); text-transform: uppercase; letter-spacing: 0.05em;">UK Based Team</span>
               </div>
             </div>
-          </div>
-          
-          <!-- System Parameters Label -->
-          <div style="margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid rgba(255, 255, 255, 0.05);">
-            <div style="display: flex; align-items: center; gap: 0.5rem;">
-              <div style="width: 6px; height: 6px; border: 1px solid rgba(6, 182, 212, 0.3); transform: rotate(45deg);"></div>
-              <span style="font-family: var(--font-mono); font-size: 0.5rem; color: rgba(255, 255, 255, 0.2); text-transform: uppercase; letter-spacing: 0.1em;">System Parameters / Non-Negotiable</span>
+
+            <!-- Bottom technical annotation -->
+            <div style="margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid rgba(255, 255, 255, 0.05);">
+              <div style="display: flex; align-items: center; gap: 0.5rem;">
+                <div style="width: 6px; height: 6px; border: 1px solid rgba(6, 182, 212, 0.3); transform: rotate(45deg);"></div>
+                <span style="font-family: var(--font-mono); font-size: 0.5rem; color: rgba(255, 255, 255, 0.2); text-transform: uppercase; letter-spacing: 0.1em;">System Parameters / Non-Negotiable</span>
+              </div>
             </div>
           </div>
         </div>
-        
-        <!-- RIGHT COLUMN - Workflow Cycle -->
-        <div class="workflow-container" style="position: relative;">
+
+
+        <!-- RIGHT COLUMN - Wave Animation -->
+        <div style="position: relative;">
+          <!-- Stage cards positioned along wave -->
           <div style="position: relative;">
-            <!-- Top Row Boxes -->
-            <div style="position: absolute; top: 0; left: 0; width: 100%; display: flex; justify-content: space-between; padding: 0 10%; z-index: 10;">
-              <div style="position: relative;">
-                <div style="position: relative; margin-bottom: 2rem;">
-                  <div style="position: absolute; left: 50%; transform: translateX(-50%); width: 1px; background: linear-gradient(to bottom, rgba(6, 182, 212, 0.3), transparent); top: 100%; height: 3rem;"></div>
-                  <div class="workflow-box">
-                    <div style="position: absolute; top: 0; left: 0; width: 12px; height: 12px; border-left: 1px solid rgba(6, 182, 212, 0.15); border-top: 1px solid rgba(6, 182, 212, 0.15);"></div>
-                    <div style="position: absolute; bottom: 0; right: 0; width: 12px; height: 12px; border-right: 1px solid rgba(6, 182, 212, 0.15); border-bottom: 1px solid rgba(6, 182, 212, 0.15);"></div>
-                    <div style="position: absolute; inset: 0; background-image: linear-gradient(rgba(6, 182, 212, 0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(6, 182, 212, 0.5) 1px, transparent 1px); background-size: 12px 12px; opacity: 0.08;"></div>
-                    <div style="position: absolute; inset: 0; background: linear-gradient(135deg, rgba(6, 182, 212, 0.1), rgba(6, 182, 212, 0.05), transparent);"></div>
-                    <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem; position: relative; z-index: 10;">
-                      <span style="font-family: var(--font-mono); font-size: 0.5rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255, 255, 255, 0.3);">01</span>
-                    </div>
-                    <h3 style="font-size: 1.1rem; font-weight: 700; margin-bottom: 0.4rem; position: relative; z-index: 10; line-height: 1.2; color: var(--color-text-primary);">Diagnose</h3>
-                    <p class="workflow-box-subtitle">Understanding your business, not just requirements.</p>
+            <!-- Top row cards -->
+            <div style="position: absolute; top: 0; left: 0; width: 100%; display: flex; justify-content: space-between; padding: 0 8%; z-index: 10;">
+              <div style="position: relative; margin-left: 8%;">
+                <div class="workflow-box" style="margin-bottom: 2rem;">
+                  <!-- Connection line to wave -->
+                  <div style="position: absolute; left: 50%; transform: translateX(-50%); width: 1px; background: linear-gradient(to bottom, rgba(6, 182, 212, 0.4), transparent); top: 100%; height: 2rem;"></div>
+                  <!-- Number header -->
+                  <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem; position: relative; z-index: 10;">
+                    <div style="width: 0.5rem; height: 0.5rem; background: rgba(6, 182, 212, 0.6);"></div>
+                    <span style="font-family: var(--font-mono); font-size: 0.5625rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(6, 182, 212, 0.5);">01</span>
+                    <div style="flex: 1; height: 1px; background: linear-gradient(to right, rgba(6, 182, 212, 0.3), transparent);"></div>
                   </div>
+                  <h3 style="font-size: 1rem; font-weight: 700; margin-bottom: 0.5rem; position: relative; z-index: 10; line-height: 1.2; color: rgba(6, 182, 212, 0.95);">Diagnose</h3>
+                  <p class="workflow-box-subtitle" style="font-size: 0.6875rem; color: rgba(255, 255, 255, 0.6); position: relative; z-index: 10;">Understanding your business, not just requirements.</p>
                 </div>
               </div>
-              <div style="position: relative;">
-                <div style="position: relative; margin-bottom: 2rem;">
-                  <div style="position: absolute; left: 50%; transform: translateX(-50%); width: 1px; background: linear-gradient(to bottom, rgba(6, 182, 212, 0.3), transparent); top: 100%; height: 3rem;"></div>
-                  <div class="workflow-box">
-                    <div style="position: absolute; top: 0; left: 0; width: 12px; height: 12px; border-left: 1px solid rgba(6, 182, 212, 0.15); border-top: 1px solid rgba(6, 182, 212, 0.15);"></div>
-                    <div style="position: absolute; bottom: 0; right: 0; width: 12px; height: 12px; border-right: 1px solid rgba(6, 182, 212, 0.15); border-bottom: 1px solid rgba(6, 182, 212, 0.15);"></div>
-                    <div style="position: absolute; inset: 0; background-image: linear-gradient(rgba(6, 182, 212, 0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(6, 182, 212, 0.5) 1px, transparent 1px); background-size: 12px 12px; opacity: 0.08;"></div>
-                    <div style="position: absolute; inset: 0; background: linear-gradient(135deg, rgba(6, 182, 212, 0.1), rgba(6, 182, 212, 0.05), transparent);"></div>
-                    <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem; position: relative; z-index: 10;">
-                      <span style="font-family: var(--font-mono); font-size: 0.5rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255, 255, 255, 0.3);">03</span>
-                    </div>
-                    <h3 style="font-size: 1.1rem; font-weight: 700; margin-bottom: 0.4rem; position: relative; z-index: 10; line-height: 1.2; color: var(--color-text-primary);">Build</h3>
-                    <p class="workflow-box-subtitle">Short cycles with regular check-ins.</p>
+              <div style="position: relative; margin-right: 8%;">
+                <div class="workflow-box" style="margin-bottom: 2rem;">
+                  <!-- Connection line to wave -->
+                  <div style="position: absolute; left: 50%; transform: translateX(-50%); width: 1px; background: linear-gradient(to bottom, rgba(6, 182, 212, 0.4), transparent); top: 100%; height: 2rem;"></div>
+                  <!-- Number header -->
+                  <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem; position: relative; z-index: 10;">
+                    <div style="width: 0.5rem; height: 0.5rem; background: rgba(6, 182, 212, 0.6);"></div>
+                    <span style="font-family: var(--font-mono); font-size: 0.5625rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(6, 182, 212, 0.5);">03</span>
+                    <div style="flex: 1; height: 1px; background: linear-gradient(to right, rgba(6, 182, 212, 0.3), transparent);"></div>
                   </div>
+                  <h3 style="font-size: 1rem; font-weight: 700; margin-bottom: 0.5rem; position: relative; z-index: 10; line-height: 1.2; color: rgba(6, 182, 212, 0.95);">Build</h3>
+                  <p class="workflow-box-subtitle" style="font-size: 0.6875rem; color: rgba(255, 255, 255, 0.6); position: relative; z-index: 10;">Short cycles with regular check-ins. Weekly progress.</p>
                 </div>
               </div>
             </div>
-            
-            <!-- Wave SVG -->
+
+            <!-- Wave with orb -->
             <div style="position: relative; z-index: 0;">
-              <div style="position: relative; width: 100%; height: 250px; display: flex; align-items: center; justify-content: center;">
+              <div style="position: relative; width: 100%; height: 300px; display: flex; align-items: center; justify-content: center;">
                 <svg viewBox="0 0 800 300" style="width: 100%; height: 100%;" preserveAspectRatio="xMidYMid meet">
                   <defs>
                     <filter id="waveGlow">
@@ -1471,7 +1535,9 @@
                     </filter>
                     <path id="wavePath" d="M 0,150 C 50,50 150,50 200,150 C 250,250 350,250 400,150 C 450,50 550,50 600,150 C 650,250 750,250 800,150"></path>
                   </defs>
+                  <!-- The visible dotted wave path -->
                   <path d="M 0,150 C 50,50 150,50 200,150 C 250,250 350,250 400,150 C 450,50 550,50 600,150 C 650,250 750,250 800,150" fill="none" stroke="rgba(6, 182, 212, 0.2)" stroke-width="2" stroke-dasharray="8 4" filter="url(#waveGlow)"></path>
+                  <!-- The traveling logo -->
                   <g transform="translate(-12, -12)">
                     <image href="cold-lava-icon.png" x="0" y="0" width="24" height="24" opacity="1"></image>
                     <animateMotion dur="12s" repeatCount="indefinite" rotate="auto">
@@ -1481,44 +1547,40 @@
                 </svg>
               </div>
             </div>
-            
-            <!-- Bottom Row Boxes -->
-            <div style="position: absolute; bottom: 0; left: 0; width: 100%; display: flex; justify-content: space-between; padding: 0 10%; z-index: 10;">
-              <div style="position: relative; margin-left: 15%;">
-                <div style="position: relative; margin-top: 3rem;">
-                  <div style="position: absolute; left: 50%; transform: translateX(-50%); width: 1px; background: linear-gradient(to top, rgba(6, 182, 212, 0.3), transparent); bottom: 100%; height: 3rem;"></div>
-                  <div class="workflow-box">
-                    <div style="position: absolute; top: 0; left: 0; width: 12px; height: 12px; border-left: 1px solid rgba(6, 182, 212, 0.15); border-top: 1px solid rgba(6, 182, 212, 0.15);"></div>
-                    <div style="position: absolute; bottom: 0; right: 0; width: 12px; height: 12px; border-right: 1px solid rgba(6, 182, 212, 0.15); border-bottom: 1px solid rgba(6, 182, 212, 0.15);"></div>
-                    <div style="position: absolute; inset: 0; background-image: linear-gradient(rgba(6, 182, 212, 0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(6, 182, 212, 0.5) 1px, transparent 1px); background-size: 12px 12px; opacity: 0.08;"></div>
-                    <div style="position: absolute; inset: 0; background: linear-gradient(135deg, rgba(6, 182, 212, 0.1), rgba(6, 182, 212, 0.05), transparent);"></div>
-                    <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem; position: relative; z-index: 10;">
-                      <span style="font-family: var(--font-mono); font-size: 0.5rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255, 255, 255, 0.3);">02</span>
-                    </div>
-                    <h3 style="font-size: 1.1rem; font-weight: 700; margin-bottom: 0.4rem; position: relative; z-index: 10; line-height: 1.2; color: var(--color-text-primary);">Design</h3>
-                    <p class="workflow-box-subtitle">User-centric, timeless.</p>
+
+            <!-- Bottom row cards -->
+            <div style="position: absolute; bottom: 0; left: 0; width: 100%; display: flex; justify-content: space-between; padding: 0 8%; z-index: 10;">
+              <div style="position: relative; margin-left: 28%;">
+                <div class="workflow-box" style="margin-top: 2rem;">
+                  <!-- Connection line to wave -->
+                  <div style="position: absolute; left: 50%; transform: translateX(-50%); width: 1px; background: linear-gradient(to top, rgba(6, 182, 212, 0.4), transparent); bottom: 100%; height: 2rem;"></div>
+                  <!-- Number header -->
+                  <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem; position: relative; z-index: 10;">
+                    <div style="width: 0.5rem; height: 0.5rem; background: rgba(6, 182, 212, 0.6);"></div>
+                    <span style="font-family: var(--font-mono); font-size: 0.5625rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(6, 182, 212, 0.5);">02</span>
+                    <div style="flex: 1; height: 1px; background: linear-gradient(to right, rgba(6, 182, 212, 0.3), transparent);"></div>
                   </div>
+                  <h3 style="font-size: 1rem; font-weight: 700; margin-bottom: 0.5rem; position: relative; z-index: 10; line-height: 1.2; color: rgba(6, 182, 212, 0.95);">Design</h3>
+                  <p class="workflow-box-subtitle" style="font-size: 0.6875rem; color: rgba(255, 255, 255, 0.6); position: relative; z-index: 10;">Clear scope, timeline, and cost before any code.</p>
                 </div>
               </div>
-              <div style="position: relative; margin-right: 15%;">
-                <div style="position: relative; margin-top: 3rem;">
-                  <div style="position: absolute; left: 50%; transform: translateX(-50%); width: 1px; background: linear-gradient(to top, rgba(6, 182, 212, 0.3), transparent); bottom: 100%; height: 3rem;"></div>
-                  <div class="workflow-box">
-                    <div style="position: absolute; top: 0; left: 0; width: 12px; height: 12px; border-left: 1px solid rgba(6, 182, 212, 0.15); border-top: 1px solid rgba(6, 182, 212, 0.15);"></div>
-                    <div style="position: absolute; bottom: 0; right: 0; width: 12px; height: 12px; border-right: 1px solid rgba(6, 182, 212, 0.15); border-bottom: 1px solid rgba(6, 182, 212, 0.15);"></div>
-                    <div style="position: absolute; inset: 0; background-image: linear-gradient(rgba(6, 182, 212, 0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(6, 182, 212, 0.5) 1px, transparent 1px); background-size: 12px 12px; opacity: 0.08;"></div>
-                    <div style="position: absolute; inset: 0; background: linear-gradient(135deg, rgba(6, 182, 212, 0.1), rgba(6, 182, 212, 0.05), transparent);"></div>
-                    <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem; position: relative; z-index: 10;">
-                      <span style="font-family: var(--font-mono); font-size: 0.5rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255, 255, 255, 0.3);">04</span>
-                    </div>
-                    <h3 style="font-size: 1.1rem; font-weight: 700; margin-bottom: 0.4rem; position: relative; z-index: 10; line-height: 1.2; color: var(--color-text-primary);">Support</h3>
-                    <p class="workflow-box-subtitle">Always available when you need us.</p>
+              <div style="position: relative; margin-right: 0%;">
+                <div class="workflow-box" style="margin-top: 2rem;">
+                  <!-- Connection line to wave -->
+                  <div style="position: absolute; left: 50%; transform: translateX(-50%); width: 1px; background: linear-gradient(to top, rgba(6, 182, 212, 0.4), transparent); bottom: 100%; height: 2rem;"></div>
+                  <!-- Number header -->
+                  <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem; position: relative; z-index: 10;">
+                    <div style="width: 0.5rem; height: 0.5rem; background: rgba(6, 182, 212, 0.6);"></div>
+                    <span style="font-family: var(--font-mono); font-size: 0.5625rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(6, 182, 212, 0.5);">04</span>
+                    <div style="flex: 1; height: 1px; background: linear-gradient(to right, rgba(6, 182, 212, 0.3), transparent);"></div>
                   </div>
+                  <h3 style="font-size: 1rem; font-weight: 700; margin-bottom: 0.5rem; position: relative; z-index: 10; line-height: 1.2; color: rgba(6, 182, 212, 0.95);">Support</h3>
+                  <p class="workflow-box-subtitle" style="font-size: 0.6875rem; color: rgba(255, 255, 255, 0.6); position: relative; z-index: 10;">Launch isn't the end. We optimise as you grow.</p>
                 </div>
               </div>
             </div>
-            
-            <!-- Bottom Label -->
+
+            <!-- Bottom annotation -->
             <div style="text-align: center; margin-top: 3rem;">
               <div style="display: inline-flex; align-items: center; gap: 0.75rem;">
                 <div style="height: 1px; width: 2rem; background: rgba(6, 182, 212, 0.2);"></div>
@@ -1528,7 +1590,7 @@
             </div>
           </div>
         </div>
-        
+
       </div>
     </div>
   </section>
@@ -2448,6 +2510,50 @@
       }
       updateTime();
       setInterval(updateTime, 1000);
+    })();
+
+    // ===== TICKER SPOTLIGHT =====
+    (function() {
+      var tickerLogos = document.querySelectorAll('[style*="filter: grayscale"]');
+      if (tickerLogos.length === 0) return;
+
+      function updateSpotlight() {
+        var centerX = window.innerWidth / 2;
+        var closestLogo = null;
+        var smallestDistance = Infinity;
+
+        // Find logo closest to center
+        tickerLogos.forEach(function(logo) {
+          var rect = logo.getBoundingClientRect();
+          var logoCenter = rect.left + rect.width / 2;
+          var distanceFromCenter = Math.abs(centerX - logoCenter);
+
+          if (distanceFromCenter < smallestDistance) {
+            smallestDistance = distanceFromCenter;
+            closestLogo = logo;
+          }
+        });
+
+        // Apply color only to closest logo(s) - within 150px of center
+        tickerLogos.forEach(function(logo) {
+          var rect = logo.getBoundingClientRect();
+          var logoCenter = rect.left + rect.width / 2;
+          var distanceFromCenter = Math.abs(centerX - logoCenter);
+
+          if (distanceFromCenter < 150) {
+            // Show color (remove grayscale)
+            logo.style.filter = 'grayscale(0%)';
+            logo.style.opacity = '1';
+          } else {
+            // Show grayscale
+            logo.style.filter = 'grayscale(100%)';
+            logo.style.opacity = '0.6';
+          }
+        });
+      }
+
+      // Update continuously as ticker animates
+      setInterval(updateSpotlight, 50);
     })();
 
     // ===== WORKFLOW ANIMATION =====
