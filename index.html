@@ -2398,10 +2398,15 @@
     if (window.location.hash) {
       var target = document.querySelector(window.location.hash);
       if (target && target.classList.contains('tier-item')) {
+        // Immediately scroll to the section
+        setTimeout(function() {
+          target.scrollIntoView({ behavior: 'auto', block: 'start' });
+        }, 100);
+        // Then open the tier
         setTimeout(function() {
           var header = target.querySelector('.tier-header');
           if (header) toggleTier(header);
-        }, 1200);
+        }, 400);
       }
     }
 
