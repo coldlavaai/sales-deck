@@ -1,6 +1,6 @@
-# Cold Lava - Sales Rep Onboarding
+# Cold Lava - Sales Deck
 
-Interactive sales presentation for Cold Lava sales representatives.
+Interactive sales presentation for Cold Lava.
 
 ## Features
 
