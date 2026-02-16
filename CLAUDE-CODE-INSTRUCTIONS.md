@@ -9,7 +9,9 @@
 
 ## 🎯 OBJECTIVE
 
-Build a stunning, interactive sales deck that **exactly matches** the Cold Lava website (https://coldlava.ai) in design, animation, and feel. This is for sales reps to use when pitching Cold Lava's services.
+Build a stunning, interactive sales deck that **exactly matches** the Cold Lava website (https://coldlava.ai) in design, animation, and feel. This is for pitching Cold Lava's services.
+
+**THIS IS THE ONLY PRIORITY** - Focus solely on completing this sales deck. No other work (Solar BOS, Aztec, etc.) until this is done.
 
 **Critical requirement:** Use the **front-end design tool** throughout the build. Match coldlava.ai animations, backgrounds, and UI design precisely.
 
