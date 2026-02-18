@@ -2573,6 +2573,10 @@
         { start: 9000, end: 12000 }   // Support (index 3)
       ];
 
+      // DOM order: [Diagnose(0), Build(1), Design(2), Support(3)]
+      // Wave order: Diagnose → Design → Build → Support
+      var stageToBox = [0, 2, 1, 3];
+
       var activeStage = -1;
 
       function updateWorkflowBoxes() {
@@ -2593,7 +2597,7 @@
 
           // Update all boxes
           workflowBoxes.forEach(function(box, index) {
-            if (index === activeStage) {
+            if (index === stageToBox[activeStage]) {
               box.style.opacity = '1';
               box.style.transform = 'scale(1)';
               box.style.borderColor = 'rgba(6, 182, 212, 0.4)';
