@@ -2558,19 +2558,21 @@
 
     // ===== WORKFLOW ANIMATION =====
     (function() {
-      // Select all workflow boxes
       var workflowBoxes = document.querySelectorAll('.workflow-box');
       if (workflowBoxes.length === 0) return;
 
-      var startTime = Date.now();
-      var totalDuration = 12000; // 12 seconds total
+      // Use the SVG's own clock so JS stays in sync with animateMotion (no drift)
+      var svg = document.querySelector('svg');
+      var totalDuration = 12; // seconds (must match animateMotion dur)
 
-      // Stage timing: 0-3s, 3-6s, 6-9s, 9-12s
+      // Wave path has 4 equal segments. Icon peaks/troughs at:
+      //   Diagnose: ~1.5s  Design: ~4.5s  Build: ~7.5s  Support: ~10.5s
+      // Transitions fire ~1s before the icon arrives so it lights up on approach.
       var stageTimes = [
-        { start: 0, end: 3000 },      // Diagnose (index 0)
-        { start: 3000, end: 6000 },   // Design (index 1)
-        { start: 6000, end: 9000 },   // Build (index 2)
-        { start: 9000, end: 12000 }   // Support (index 3)
+        { start: 10.5, end: 3.5 },  // Diagnose (wraps: 10.5→12→3.5)
+        { start: 3.5,  end: 6.5 },  // Design
+        { start: 6.5,  end: 9.5 },  // Build
+        { start: 9.5,  end: 12  }   // Support (leads into Diagnose wrap)
       ];
 
       // DOM order: [Diagnose(0), Build(1), Design(2), Support(3)]
@@ -2579,23 +2581,25 @@
 
       var activeStage = -1;
 
-      function updateWorkflowBoxes() {
-        var elapsed = (Date.now() - startTime) % totalDuration;
-        var newStage = -1;
-
-        // Find which stage we're in
+      function getStage(t) {
         for (var i = 0; i < stageTimes.length; i++) {
-          if (elapsed >= stageTimes[i].start && elapsed < stageTimes[i].end) {
-            newStage = i;
-            break;
+          var s = stageTimes[i].start, e = stageTimes[i].end;
+          if (s > e) {
+            // wraps around (e.g. 10.5 → 3.5 crosses zero)
+            if (t >= s || t < e) return i;
+          } else {
+            if (t >= s && t < e) return i;
           }
         }
+        return -1;
+      }
 
-        // Update active state if changed
+      function updateWorkflowBoxes() {
+        var t = svg.getCurrentTime() % totalDuration;
+        var newStage = getStage(t);
+
         if (newStage !== activeStage) {
           activeStage = newStage;
-
-          // Update all boxes
           workflowBoxes.forEach(function(box, index) {
             if (index === stageToBox[activeStage]) {
               box.style.opacity = '1';
@@ -2612,9 +2616,7 @@
         }
       }
 
-      // Update every 100ms
-      setInterval(updateWorkflowBoxes, 100);
-      // Run immediately
+      setInterval(updateWorkflowBoxes, 50);
       updateWorkflowBoxes();
     })();
 
